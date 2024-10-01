@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All National Parks</title>
+</head>
+<body>
+    <h1>National Parks</h1>
+    <ul>
+        {% for park in parks %}
+            <li>
+                <img src="{{ url_for('static', filename=park.image) }}" alt="{{ park.name }}" style="width:200px;height:auto;">
+                <h2>{{ park.name }}</h2>
+                <p>{{ park.description }}</p>
+                <a href="{{ url_for('park_detail', park_id=park.id) }}">More Info</a>
+                <button>Like ({{ park.likes }})</button>
+                <button>Dislike ({{ park.dislikes }})</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
